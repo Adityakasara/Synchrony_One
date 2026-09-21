@@ -1,0 +1,24 @@
+[
+  {
+    "Analysis_Track": "Version B (Primary: All Customers with First-Tx Open Imputation)",
+    "Customer_Count": 45000,
+    "FY25_Total_Spend_INR": 377645076.24,
+    "FY26_Total_Spend_INR": 435688399.9,
+    "FY25_HSIC_SoW_Pct": 22.69,
+    "FY26_HSIC_SoW_Pct": 15.82,
+    "SoW_Change_pp": -6.87,
+    "Silent_Attrition_Count": 3784,
+    "Total_Wallet_Opportunity_INR": 54359226.24
+  },
+  {
+    "Analysis_Track": "Version A (Strict: Known Card Open Dates Only)",
+    "Customer_Count": 38164,
+    "FY25_Total_Spend_INR": 296344254.68,
+    "FY26_Total_Spend_INR": 353804475.4,
+    "FY25_HSIC_SoW_Pct": 28.91,
+    "FY26_HSIC_SoW_Pct": 19.48,
+    "SoW_Change_pp": -9.43,
+    "Silent_Attrition_Count": 3784,
+    "Total_Wallet_Opportunity_INR": 54359226.24
+  }
+]

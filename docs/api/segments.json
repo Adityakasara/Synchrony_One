@@ -1,0 +1,52 @@
+[
+  {
+    "Customer_Segment": "Emerging Risk",
+    "Customer_Count": 4565,
+    "Avg_HSIC_SoW_FY26": 9.47,
+    "Avg_SoW_Change_pp": -31.17,
+    "Avg_Risk_Score": 63.86,
+    "Avg_Total_Spend_FY26": 12654.16,
+    "Avg_Wallet_Opportunity": 3544.39,
+    "Total_Wallet_Opportunity": 16180157.19
+  },
+  {
+    "Customer_Segment": "High Opportunity",
+    "Customer_Count": 6814,
+    "Avg_HSIC_SoW_FY26": 2.54,
+    "Avg_SoW_Change_pp": 1.92,
+    "Avg_Risk_Score": 10.2,
+    "Avg_Total_Spend_FY26": 18747.77,
+    "Avg_Wallet_Opportunity": 40.27,
+    "Total_Wallet_Opportunity": 274391.53
+  },
+  {
+    "Customer_Segment": "Low Engagement",
+    "Customer_Count": 25916,
+    "Avg_HSIC_SoW_FY26": 11.99,
+    "Avg_SoW_Change_pp": 2.73,
+    "Avg_Risk_Score": 16.38,
+    "Avg_Total_Spend_FY26": 4365.84,
+    "Avg_Wallet_Opportunity": 182.82,
+    "Total_Wallet_Opportunity": 4737924.39
+  },
+  {
+    "Customer_Segment": "Loyal HSIC Customer",
+    "Customer_Count": 3921,
+    "Avg_HSIC_SoW_FY26": 48.89,
+    "Avg_SoW_Change_pp": 35.19,
+    "Avg_Risk_Score": 14.56,
+    "Avg_Total_Spend_FY26": 19682.08,
+    "Avg_Wallet_Opportunity": 13.76,
+    "Total_Wallet_Opportunity": 53954.15
+  },
+  {
+    "Customer_Segment": "Silent Attrition",
+    "Customer_Count": 3784,
+    "Avg_HSIC_SoW_FY26": 7.17,
+    "Avg_SoW_Change_pp": -53.34,
+    "Avg_Risk_Score": 87.41,
+    "Avg_Total_Spend_FY26": 17704.55,
+    "Avg_Wallet_Opportunity": 8750.74,
+    "Total_Wallet_Opportunity": 33112798.98
+  }
+]

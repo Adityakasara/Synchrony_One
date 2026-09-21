@@ -1,0 +1,55 @@
+==============================================================================
+SYNCHRONY FINANCIAL HACKATHON 2026 - ANALYTICAL ASSUMPTIONS & DATA DICTIONARY
+Customer and Credit Card Analytics – Silent Attrition / Declining Share of Wallet
+==============================================================================
+
+1. FISCAL YEAR DEFINITION:
+   - MetroMart operates on an August 1 to July 31 fiscal calendar.
+   - FY2025 (Baseline): Transactions between 2024-08-01 and 2025-07-31 (12 full months).
+   - FY2026 (Performance Period): Transactions between 2025-08-01 and 2026-07-31 (12 full months).
+   - Total analysis covers exactly 24 consecutive calendar months (Aug 2024 - Jul 2026).
+
+2. NET SALES ACCOUNTING FORMULA:
+   - Net Sales = Gross Purchases - Merchandise Returns.
+   - For all transactions where Transaction_Type == 'Return', Net_Sales is calculated as -abs(Transaction_Amount).
+   - Returns do not count as positive transaction volume; effective transaction count reflects true purchase frequency.
+
+3. ACTIVE CARD WINDOWING:
+   - A cardholder's Share of Wallet is evaluated during the period when they hold an active HSIC credit card.
+   - Where Customer Open_Date is available, transactions prior to Open_Date are excluded from active cardholder evaluation.
+   - Where Open_Date is missing, the cardholder's first observed MetroMart transaction date is used as the baseline start date.
+
+4. SHARE OF WALLET (SoW) DEFINITION:
+   - Individual Customer SoW (%) = (Customer FY HSIC Net Spend / Customer FY Total MetroMart Net Spend) * 100
+   - Portfolio Macro SoW (%) = (Sum of HSIC Net Spend across all customers / Sum of Total MetroMart Net Spend) * 100
+   - Values are strictly bounded between 0.00% and 100.00%.
+
+5. PAYMENT INSTRUMENT CODES:
+   - Payment Code 1: HSIC Bank Credit Card (Co-branded partner card)
+   - Payment Code 2: Other Bank Credit Card (Competitor credit cards - HDFC, ICICI, SBI, Axis, etc.)
+   - Payment Code 3: Debit Card (Checking account point-of-sale debit)
+   - Payment Code 4: Cash / UPI (Mobile phone QR scan-and-pay: PhonePe, Google Pay, Paytm)
+   - Payment Code 5: MetroMart Wallet (Merchant closed-loop digital stored-value app wallet)
+
+6. SILENT ATTRITION DEFINITION:
+   - A cardholder is classified into 'Silent Attrition' if and only if they satisfy:
+     (a) Total MetroMart spend did not collapse (Total Retail Spend YoY Growth >= -10%)
+     (b) HSIC Card spend declined (FY26 HSIC Spend < FY25 HSIC Spend)
+     (c) HSIC Share of Wallet contracted significantly (SoW Delta <= -10.0 percentage points)
+     (d) Customer has active retail transaction activity in both FY25 and FY26.
+   - Exactly 3,784 accounts meet these criteria, representing 8.41% of active accounts.
+
+7. WALLET OPPORTUNITY SIZING FORMULA:
+   - Expected FY26 HSIC Spend = FY26 Total Spend * (FY25 HSIC SoW / 100)
+   - Wallet Opportunity = max(0, Expected FY26 HSIC Spend - Actual FY26 HSIC Spend)
+   - Sizing represents the historical merchandise volume gap recoverable if the customer's payment habits are restored.
+   - Total Portfolio Wallet Opportunity: INR 54,359,226.24 (~INR 54.36M).
+   - Silent Attrition Cohort Share: INR 39,812,014.28 (73.24% of total opportunity).
+
+8. RECOVERY BUSINESS CASE (CONSERVATIVE BASE CASE):
+   - Target Recapture Rate: 10.0% of historical gap across the 3,784 Silent Attrition cardholders.
+   - Incremental Annual Card Spend Recaptured: INR 5,435,923 (~INR 5.44M).
+   - Campaign Budget (Wallet bonus, POS cashback subsidies, tech setup): INR 850,000.
+   - Net Incremental Financial Lift: INR 4,585,923 (~INR 4.59M net profit lift).
+   - Return on Investment (ROI): 5.2x Net ROI Multiple.
+==============================================================================

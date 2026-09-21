@@ -1,0 +1,31 @@
+{
+  "system_name": "HSIC SOLUTION",
+  "total_customers": 45000,
+  "total_transactions": 444118,
+  "fy25_total_spend": 384290102.13,
+  "fy26_total_spend": 442826235.04999995,
+  "fy25_hsic_spend": 91296584.11,
+  "fy26_hsic_spend": 74330614.82,
+  "fy25_hsic_sow_pct": 23.76,
+  "fy26_hsic_sow_pct": 16.79,
+  "sow_change_pp": -6.97,
+  "silent_attrition_count": 3784,
+  "silent_attrition_pct": 8.41,
+  "total_wallet_opportunity": 54359226.24,
+  "data_quality": {
+    "Total_Customers": 45000,
+    "Total_Transactions": 444118,
+    "Total_Sales_Count": 399304,
+    "Total_Returns_Count": 44814,
+    "Sales_Volume_INR": 1233257856.33,
+    "Returns_Volume_INR": 139316933.9,
+    "Net_Sales_Volume_INR": 1093940922.4299996,
+    "Missing_Card_Open_Dates": 6836,
+    "Missing_Card_Open_Pct": 15.19,
+    "Closed_Cards_Count": 7664,
+    "Missing_Category_Codes": 0,
+    "Missing_Payment_Codes": 0,
+    "Prime_Members_Count": 26971,
+    "Non_Prime_Members_Count": 18029
+  }
+}
