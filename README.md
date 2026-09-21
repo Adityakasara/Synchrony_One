@@ -151,6 +151,5 @@ Search these representative account IDs on the [Live Dashboard](https://adityaka
 
 ---
 
-## 👥 Authors
-- **Aditya Kasara** — *Lead Analytics & Architecture*  
+ 
 - Developed for the **Synchrony Analytics Hackathon 2026**.
