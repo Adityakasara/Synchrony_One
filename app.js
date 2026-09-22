@@ -465,7 +465,15 @@ function loadShardScript(prefix) {
         s.setAttribute("data-shard", prefix);
         s.src = `./api/customers/shard_${prefix}.js`;
         s.onload = () => resolve();
-        s.onerror = () => reject(new Error(`Shard ${prefix} failed to load`));
+        s.onerror = () => {
+            // Fallback path in case page is served from repository root
+            const s2 = document.createElement("script");
+            s2.setAttribute("data-shard", prefix);
+            s2.src = `./docs/api/customers/shard_${prefix}.js`;
+            s2.onload = () => resolve();
+            s2.onerror = () => reject(new Error(`Shard ${prefix} failed to load`));
+            document.head.appendChild(s2);
+        };
         document.head.appendChild(s);
     });
 }
