@@ -57,7 +57,7 @@
                     <div class="metric-sub">Historical Baseline Share Gap</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-label">BASE CASE RECOVERY (10%)</div>
+                    <div class="metric-label">10% RECOVERY SCENARIO</div>
                     <div class="metric-val" id="kpi-base-recovery">INR 5.44M</div>
                     <div class="metric-sub">INR 1,437 / At-Risk Customer</div>
                 </div>
@@ -234,20 +234,20 @@
                             <div class="radar-body">
                                 <div class="radar-reason-label">Predictive "Why" Explanation:</div>
                                 <div class="radar-reason-text" id="c360-radar-reason">
-                                    Electronics purchases shifted away to rival bank credit cards
+                                    Shifted General Merchandise checkouts to MetroMart Wallet for 1-tap in-app convenience discounts.
                                 </div>
                                 <div class="radar-metrics-grid">
                                     <div class="radar-metric-chip">
-                                        <span class="chip-label" id="c360-radar-sow-label">SoW Trend:</span>
-                                        <span class="chip-val delta-neg" id="c360-radar-sow">-40.0%</span>
+                                        <span class="chip-label" id="c360-radar-sow-label">SoW Drop:</span>
+                                        <span class="chip-val delta-neg" id="c360-radar-sow">-100.0%</span>
                                     </div>
                                     <div class="radar-metric-chip">
                                         <span class="chip-label">Diverted Category:</span>
-                                        <span class="chip-val" id="c360-radar-cat">Electronics</span>
+                                        <span class="chip-val" id="c360-radar-cat">General Merchandise</span>
                                     </div>
                                     <div class="radar-metric-chip">
                                         <span class="chip-label">Dominant Rival:</span>
-                                        <span class="chip-val" id="c360-radar-alt">Other Bank Credit Card</span>
+                                        <span class="chip-val" id="c360-radar-alt">MetroMart Wallet</span>
                                     </div>
                                 </div>
                             </div>
@@ -262,14 +262,14 @@
                             <div class="nbo-body">
                                 <div class="nbo-rule-line">
                                     <span class="nbo-label-if">IF</span>
-                                    <span class="nbo-text-cond" id="c360-nbo-rule">Customer buys groceries frequently AND SoW &lt; 40%</span>
+                                    <span class="nbo-text-cond" id="c360-nbo-rule">IF MetroMart Stored Wallet Dominant Tender</span>
                                 </div>
                                 <div class="nbo-offer-line">
                                     <span class="nbo-label-then">THEN</span>
-                                    <span class="nbo-text-offer" id="c360-nbo-offer">Offer extra 3% grocery cashback</span>
+                                    <span class="nbo-text-offer" id="c360-nbo-offer">Offer 2.5% instant auto-reload wallet bonus when funded via HSIC Card</span>
                                 </div>
                                 <div class="nbo-sub-note" id="c360-rec-strategy">
-                                    Converts silent attrition diagnostic directly into immediate commercial intervention.
+                                    Don't fight the wallet—power it! Set HSIC Card as default auto-reload source with 2.5% top-up bonus in the app.
                                 </div>
                             </div>
                         </div>
@@ -498,6 +498,7 @@
         </div>
     </footer>
 
+    <script src="./data_store.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>

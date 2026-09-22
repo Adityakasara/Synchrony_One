@@ -39,23 +39,36 @@ Instead of treating customer risk as an unexplained black-box label, the Radar d
 ### 2. Next Best Offer (NBO) Engine ⭐
 Translates diagnostic analytics into deterministic **IF / THEN** commercial action rules:
 - **`IF Electronics Shifted to Rival Bank CC`** $\rightarrow$ *"Offer 10% cashback on Electronics for 30 days + 0% Instant POS EMI"*
-- **`IF Frequent Grocery Shopper (>= 2 visits) AND SoW < 40%`** $\rightarrow$ *"Offer extra 3% grocery cashback on all MetroMart purchases for 60 days"*
-- **`IF MetroMart Stored Wallet Dominant Tender`** $\rightarrow$ *"Offer 2.5% instant auto-reload wallet bonus when funded via card"*
+- **`IF Frequent Grocery Shopper (>= 2 visits) AND SoW < 40%`** $\rightarrow$ *"Individual NBO: Offer extra 3% grocery cashback on all MetroMart purchases for 60 days"*
+- **`IF MetroMart Stored Wallet Dominant Tender`** $\rightarrow$ *"Offer 2.5% instant auto-reload wallet bonus when funded via HSIC Card"*
 - **`IF Displaced by UPI QR Phone Scanning`** $\rightarrow$ *"Issue Virtual RuPay Card on UPI with 1.5% scan-and-pay cashback"*
 - **`IF 100% HSIC Loyalty AND Non-Prime Member`** $\rightarrow$ *"Complimentary 1-Year Prime Upgrade as Top Customer Loyalty Reward"*
 
-### 3. Early Warning Center (Predictive Watchlist)
+> [!NOTE]
+> **Offer Calibration Strategy:**
+> - **Individual NBO (3% Cashback):** A personalized micro-incentive triggered for individual cardholders displaying early grocery tender diversion to protect program margin.
+> - **Segment-Wide Campaign (5% Cashback):** A promotional, portfolio-wide marketing push deployed across the broader "Grocery Heavy Users" cohort to recapture top-of-wallet volume.
+
+### 3. Early Warning Center (Watchlist)
 - 🔴 **High Risk (1,245 customers):** Severe Silent Attrition (SoW drop > 40%)
 - 🟡 **Watchlist (3,210 customers):** Emerging Risk & Tender Switching
 - 🟢 **Healthy (40,000 customers):** Stable & Loyal Card Usage Habit
 
 ### 4. Segment Recovery Playbook ⭐
-| Segment | Customers | Current SoW | Recommended Campaign | Expected Recovery |
-| :--- | :---: | :---: | :--- | :---: |
-| **Emerging Risk** | 4,565 | 9.47% | **10% Electronics Cashback** | **+3.2% SoW** |
-| **Grocery Heavy Users** | 6,814 | 12.40% | **Extra 5% Grocery Cashback** | **+4.8% SoW** |
-| **Prime Users** | 3,921 | 48.89% | **Double Reward Week** | **+5.5% SoW** |
-| **Low Engagement** | 25,916 | 11.99% | **₹500 Welcome Back Bonus** | **+2.1% SoW** |
+| Segment | Customers | Current SoW | Recommended Campaign | Expected Recovery | Strategy Tier |
+| :--- | :---: | :---: | :--- | :---: | :--- |
+| **Emerging Risk** | 4,565 | 9.47% | **10% Electronics Cashback** | **+3.2% SoW** | High-ticket POS EMI capture |
+| **Grocery Heavy Users** | 6,814 | 12.40% | **Segment Campaign: Extra 5% Grocery Cashback** *(vs 3% Individual NBO)* | **+4.8% SoW** | Portfolio-wide supermarket push |
+| **Prime Users** | 3,921 | 48.89% | **Double Reward Week** | **+5.5% SoW** | High-margin loyalty defense |
+| **Low Engagement** | 25,916 | 11.99% | **₹500 Welcome Back Bonus** | **+2.1% SoW** | Win-back activation tender |
+
+### 5. 10% Recovery Scenario & Business Sizing
+*(Note: Modeled as a conservative 10% recapture scenario, not a speculative prediction.)*
+- **Total Wallet Opportunity:** **₹54.36M** historical baseline share gap
+- **10% Recovery Scenario (Gross Spend Lift):** **₹5.44M** incremental annual card spend
+- **Targeted Campaign Budget:** **₹850,000** (Cashback subsidies, wallet auto-reload bonus, tech enablement)
+- **Net Incremental Financial Lift:** **₹4.59M** net profit lift
+- **Return on Investment (ROI):** **5.2x Net ROI Multiple**
 
 ---
 

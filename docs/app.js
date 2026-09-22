@@ -14,6 +14,7 @@ let chartMembership = null;
 document.addEventListener("DOMContentLoaded", () => {
     initClock();
     initTabs();
+    loadCustomer(25790);
     loadDashboardData();
     initSearch();
     initSimulator();
@@ -45,6 +46,31 @@ function initTabs() {
 }
 
 async function fetchData(url, fallbackUrl) {
+    if (window.SYNCHRONY_DATA) {
+        if (url.includes("summary.json") || (fallbackUrl && fallbackUrl.includes("/api/summary"))) {
+            return window.SYNCHRONY_DATA["summary.json"];
+        }
+        if (url.includes("monthly-sow.json") || (fallbackUrl && fallbackUrl.includes("/api/monthly-sow"))) {
+            return window.SYNCHRONY_DATA["monthly-sow.json"];
+        }
+        if (url.includes("categories.json") || (fallbackUrl && fallbackUrl.includes("/api/categories"))) {
+            return window.SYNCHRONY_DATA["categories.json"];
+        }
+        if (url.includes("segments.json") || (fallbackUrl && fallbackUrl.includes("/api/segments"))) {
+            return window.SYNCHRONY_DATA["segments.json"];
+        }
+        if (url.includes("sensitivity.json") || (fallbackUrl && fallbackUrl.includes("/api/sensitivity"))) {
+            return window.SYNCHRONY_DATA["sensitivity.json"];
+        }
+        if (url.includes("/customers/") || (fallbackUrl && fallbackUrl.includes("/api/customer/"))) {
+            const parts = url.split("/");
+            const cid = parts[parts.length - 1].replace(".json", "");
+            if (window.SYNCHRONY_DATA.customers && window.SYNCHRONY_DATA.customers[cid]) {
+                return window.SYNCHRONY_DATA.customers[cid];
+            }
+        }
+    }
+
     try {
         const res = await fetch(url);
         if (res.ok) return await res.json();
