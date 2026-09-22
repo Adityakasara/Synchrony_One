@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer and Credit Card Analytics – Silent Attrition & Share of Wallet</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- Chart.js for clean institutional data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Top Institutional Bar -->
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="brand-title">
+                <span class="system-name">Customer & Credit Card Analytics</span>
+                <span class="system-tag">Silent Attrition & Share of Wallet Recovery</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <span class="timestamp" id="live-time"></span>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="sub-nav">
+        <button class="nav-tab active" data-tab="tab-executive">1. Problem Overview</button>
+        <button class="nav-tab" data-tab="tab-customer360">2. Customer 360 & Search</button>
+        <button class="nav-tab" data-tab="tab-segmentation">3. Customer Segments</button>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+        
+        <!-- TAB 1: EXECUTIVE OVERVIEW -->
+        <section id="tab-executive" class="tab-pane active">
+            <!-- Metric Ribbon -->
+            <div class="metric-ribbon">
+                <div class="metric-card">
+                    <div class="metric-label">FY2026 HSIC SHARE OF WALLET</div>
+                    <div class="metric-val" id="kpi-sow-fy26">15.82%</div>
+                    <div class="metric-sub delta-neg" id="kpi-sow-delta">▼ -6.87 pp YoY (FY25: 22.69%)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">TOTAL METROMART NET SALES</div>
+                    <div class="metric-val" id="kpi-total-spend">INR 435.69M</div>
+                    <div class="metric-sub delta-pos">▲ +15.37% YoY (Retail Growth)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">SILENT ATTRITION CARDHOLDERS</div>
+                    <div class="metric-val" id="kpi-at-risk-count">3,784</div>
+                    <div class="metric-sub">8.41% of Active Accounts</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">ESTIMATED WALLET OPPORTUNITY</div>
+                    <div class="metric-val" id="kpi-wallet-opp">INR 54.36M</div>
+                    <div class="metric-sub">Historical Baseline Share Gap</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">10% RECOVERY SCENARIO</div>
+                    <div class="metric-val" id="kpi-base-recovery">INR 5.44M</div>
+                    <div class="metric-sub">INR 1,437 / At-Risk Customer</div>
+                </div>
+            </div>
+
+            <!-- Analytical Grid -->
+            <div class="panel-grid-2">
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">24-Month Share of Wallet Deterioration Trend</div>
+                        <div class="panel-badge">Aug 2024 – Jul 2026 (Monthly Net Sales)</div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="chart-monthly-sow"></canvas>
+                    </div>
+                    <div class="panel-footer-note">
+                        <strong>Structural Finding:</strong> HSIC Share of Wallet contracted from a peak of <strong>26.60%</strong> (Aug 2024) to <strong>12.01%</strong> (Jul 2026), despite overall retail volume expanding.
+                    </div>
+                </div>
+
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Checkout Payment Channel Migration Matrix</div>
+                        <div class="panel-badge">FY25 vs FY26 Net Sales Mix</div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="chart-payment-migration"></canvas>
+                    </div>
+                    <div class="panel-footer-note">
+                        <strong>Migration Drivers:</strong> HSIC spend contracted -19.55%, whereas MetroMart Wallet expanded <strong>+38.96%</strong> and UPI grew <strong>+26.87%</strong>.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Category Heatmap & Top Segment Summary -->
+            <div class="panel-grid-2" style="margin-top: 16px;">
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Merchandise Category Share of Wallet Breakdown</div>
+                        <div class="panel-badge">10 MetroMart Categories</div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="table-categories">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th class="num">FY25 SoW</th>
+                                    <th class="num">FY26 SoW</th>
+                                    <th class="num">Delta (pp)</th>
+                                    <th class="num">Category Growth</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Top 5 Actionable Customer Segments</div>
+                        <div class="panel-badge">K-Means ML Behavioral Groupings</div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="table-segments-summary">
+                            <thead>
+                                <tr>
+                                    <th>Segment</th>
+                                    <th class="num">Accounts</th>
+                                    <th class="num">Avg SoW</th>
+                                    <th class="num">Avg Risk</th>
+                                    <th class="num">Wallet Opportunity</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: CUSTOMER 360 & SEARCH -->
+        <section id="tab-customer360" class="tab-pane">
+            <!-- Slim Inline Search Toolbar -->
+            <div class="search-toolbar">
+                <div class="search-box-wrap">
+                    <span class="search-label">Customer Search:</span>
+                    <input type="text" id="input-customer-search" placeholder="Customer ID..." value="25790">
+                    <button id="btn-search" class="btn-primary">Search</button>
+                </div>
+                <div class="quick-examples">
+                    <span class="quick-label">Suggested:</span>
+                    <button class="btn-chip" onclick="loadCustomer(25790)">#25790 (Severe Attrition)</button>
+                    <button class="btn-chip" onclick="loadCustomer(33822)">#33822 (Grocery)</button>
+                    <button class="btn-chip" onclick="loadCustomer(24664)">#24664 (Electronics)</button>
+                    <button class="btn-chip" onclick="loadCustomer(94244)">#94244 (Wallet)</button>
+                    <button class="btn-chip" onclick="loadCustomer(58218)">#58218 (UPI)</button>
+                </div>
+            </div>
+
+            <!-- Customer 360 Workspace -->
+            <div class="customer-360-grid" id="customer-profile-container">
+                <!-- Profile Card -->
+                <div class="card-panel cust-summary-card">
+                    <div class="panel-header">
+                        <div class="panel-title">Account Master Profile</div>
+                        <span class="tag-status" id="c360-segment">Silent Attrition</span>
+                    </div>
+                    <div class="c360-header-info">
+                        <div class="c360-id" id="c360-id">Customer #25790</div>
+                        <div class="c360-tier" id="c360-tier">PRIME MEMBER | MALE, AGE 55</div>
+                    </div>
+                    <div class="grid-2col" style="margin-top: 10px;">
+                        <div class="kv-item"><span class="kv-label">Credit Limit:</span> <span class="kv-val" id="c360-limit">INR 279,000</span></div>
+                        <div class="kv-item"><span class="kv-label">Card APR:</span> <span class="kv-val" id="c360-apr">32.33%</span></div>
+                        <div class="kv-item"><span class="kv-label">Open Date:</span> <span class="kv-val" id="c360-open">2025-06-09</span></div>
+                        <div class="kv-item"><span class="kv-label">Card Status:</span> <span class="kv-val" id="c360-status">Active / Open</span></div>
+                    </div>
+                    
+                    <div class="divider-line" style="margin: 8px 0;"></div>
+                    
+                    <div class="risk-gauge-block">
+                        <div class="risk-header">
+                            <span class="risk-title">Silent Attrition Risk Score</span>
+                            <span class="risk-num" id="c360-risk-score">95.0 / 100</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="c360-risk-bar" style="width: 95%;"></div>
+                        </div>
+                        <div class="risk-sub" id="c360-risk-desc">High behavioral migration risk. Spend diverted from HSIC card into alternative methods.</div>
+                    </div>
+
+                    <div class="divider-line" style="margin: 8px 0;"></div>
+
+                    <div class="wallet-opp-box" style="padding: 8px 10px;">
+                        <div class="opp-label">ESTIMATED WALLET OPPORTUNITY</div>
+                        <div class="opp-val" id="c360-wallet-opp">INR 52,338.73</div>
+                        <div class="opp-sub">Historical SoW Recovery Gap</div>
+                    </div>
+                </div>
+
+                <!-- Financial Comparison & Breakdown -->
+                <div class="card-panel cust-financial-card">
+                    <div class="panel-header">
+                        <div class="panel-title">Two-Year Financial Performance & Share-of-Wallet</div>
+                        <div class="panel-badge">FY2025 vs FY2026 Comparison</div>
+                    </div>
+
+                    <div class="comparison-cards-row">
+                        <div class="metric-card subcard">
+                            <div class="metric-label">METROMART TOTAL SPEND</div>
+                            <div class="metric-val sm" id="c360-fy25-total">INR 4,925</div>
+                            <div class="metric-sub" id="c360-fy26-total">FY26: INR 52,339 (+962.7%)</div>
+                        </div>
+                        <div class="metric-card subcard">
+                            <div class="metric-label">HSIC CO-BRANDED SPEND</div>
+                            <div class="metric-val sm" id="c360-fy25-hsic">INR 4,925</div>
+                            <div class="metric-sub delta-neg" id="c360-fy26-hsic">FY26: INR 0 (-100.0%)</div>
+                        </div>
+                        <div class="metric-card subcard">
+                            <div class="metric-label">HSIC SHARE OF WALLET</div>
+                            <div class="metric-val sm" id="c360-fy25-sow">100.0%</div>
+                            <div class="metric-sub delta-neg" id="c360-fy26-sow">FY26: 0.0% (-100.0 pp)</div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Risk Radar & Next Best Offer Engine Cards (MOVED UP FOR IMMEDIATE VISIBILITY) -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
+                        <!-- 1. Customer Risk Radar -->
+                        <div class="risk-radar-box">
+                            <div class="rec-header">
+                                <span class="badge-risk-radar">CUSTOMER RISK RADAR</span>
+                                <span class="rec-title">Root Cause Diagnosis</span>
+                            </div>
+                            <div class="radar-body">
+                                <div class="radar-reason-label">Predictive "Why" Explanation:</div>
+                                <div class="radar-reason-text" id="c360-radar-reason">
+                                    Shifted General Merchandise checkouts to MetroMart Wallet for 1-tap in-app convenience discounts.
+                                </div>
+                                <div class="radar-metrics-grid">
+                                    <div class="radar-metric-chip">
+                                        <span class="chip-label" id="c360-radar-sow-label">SoW Drop:</span>
+                                        <span class="chip-val delta-neg" id="c360-radar-sow">-100.0%</span>
+                                    </div>
+                                    <div class="radar-metric-chip">
+                                        <span class="chip-label">Diverted Category:</span>
+                                        <span class="chip-val" id="c360-radar-cat">General Merchandise</span>
+                                    </div>
+                                    <div class="radar-metric-chip">
+                                        <span class="chip-label">Dominant Rival:</span>
+                                        <span class="chip-val" id="c360-radar-alt">MetroMart Wallet</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Next Best Offer Engine ⭐ -->
+                        <div class="nbo-engine-box">
+                            <div class="rec-header">
+                                <span class="badge-nbo-engine">NEXT BEST OFFER ENGINE ⭐</span>
+                                <span class="rec-title">Rule-Triggered Action</span>
+                            </div>
+                            <div class="nbo-body">
+                                <div class="nbo-rule-line">
+                                    <span class="nbo-label-if">IF</span>
+                                    <span class="nbo-text-cond" id="c360-nbo-rule">IF MetroMart Stored Wallet Dominant Tender</span>
+                                </div>
+                                <div class="nbo-offer-line">
+                                    <span class="nbo-label-then">THEN</span>
+                                    <span class="nbo-text-offer" id="c360-nbo-offer">Offer 2.5% instant auto-reload wallet bonus when funded via HSIC Card</span>
+                                </div>
+                                <div class="nbo-sub-note" id="c360-rec-strategy">
+                                    Don't fight the wallet—power it! Set HSIC Card as default auto-reload source with 2.5% top-up bonus in the app.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compact FY2026 Payment Tender Allocation -->
+                    <div class="panel-header" style="margin-top: 12px;">
+                        <div class="panel-title" style="font-size: 12px;">FY2026 Payment Tender Allocation</div>
+                    </div>
+                    <div class="table-container" style="margin-top: 4px;">
+                        <table class="data-table compact-table" id="c360-payment-breakdown">
+                            <thead>
+                                <tr>
+                                    <th>Payment Instrument</th>
+                                    <th class="num">FY2025 Spend</th>
+                                    <th class="num">FY2026 Spend</th>
+                                    <th class="num">Share of Wallet</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: CUSTOMER SEGMENTS & EARLY WARNING CENTER -->
+        <section id="tab-segmentation" class="tab-pane">
+            
+            <!-- 1. EARLY WARNING CENTER -->
+            <div class="card-panel early-warning-panel" style="margin-bottom: 14px;">
+                <div class="panel-header" style="padding-bottom: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="badge-ewc">EARLY WARNING CENTER</span>
+                        <div class="panel-title">Silent Attrition Predictive Watchlist</div>
+                    </div>
+                    <div class="ewc-reasons-list">
+                        <span class="reasons-label">Top Migration Drivers:</span>
+                        <span class="reason-chip">⚡ Electronics Migration</span>
+                        <span class="reason-chip">💳 Wallet Migration</span>
+                        <span class="reason-chip">📉 Frequency Decline</span>
+                        <span class="reason-chip">👑 Prime Inactive</span>
+                    </div>
+                </div>
+
+                <div class="ewc-metrics-grid">
+                    <div class="ewc-metric-card risk-high">
+                        <div class="ewc-dot">🔴</div>
+                        <div class="ewc-info">
+                            <div class="ewc-title">HIGH RISK</div>
+                            <div class="ewc-val">1,245 <span class="ewc-unit">customers</span></div>
+                            <div class="ewc-sub">Severe Silent Attrition (SoW Drop &gt; 40%)</div>
+                        </div>
+                    </div>
+                    <div class="ewc-metric-card risk-watch">
+                        <div class="ewc-dot">🟡</div>
+                        <div class="ewc-info">
+                            <div class="ewc-title">WATCHLIST</div>
+                            <div class="ewc-val">3,210 <span class="ewc-unit">customers</span></div>
+                            <div class="ewc-sub">Emerging Risk & Tender Switching</div>
+                        </div>
+                    </div>
+                    <div class="ewc-metric-card risk-healthy">
+                        <div class="ewc-dot">🟢</div>
+                        <div class="ewc-info">
+                            <div class="ewc-title">HEALTHY</div>
+                            <div class="ewc-val">40,000 <span class="ewc-unit">customers</span></div>
+                            <div class="ewc-sub">Stable & Loyal Card Usage Habit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. RECOVERY ACTIONS / NEXT BEST OFFER ⭐ -->
+            <div class="card-panel" style="margin-bottom: 14px;">
+                <div class="panel-header">
+                    <div>
+                        <div class="panel-title">Recovery Actions / Next Best Offer Playbook ⭐</div>
+                        <div class="panel-subtitle" style="font-size: 11px; color: var(--slate-500); margin-top: 2px;">
+                            Translating Behavioral Segments into High-Yield Campaign Interventions
+                        </div>
+                    </div>
+                    <div class="panel-badge">Direct Business Problem Solution</div>
+                </div>
+
+                <div class="nbo-playbook-grid">
+                    <!-- Segment 1: Emerging Risk -->
+                    <div class="nbo-playbook-card featured">
+                        <div class="playbook-top">
+                            <span class="playbook-tag tag-emerging">EMERGING RISK</span>
+                            <span class="playbook-count">4,565 Customers</span>
+                        </div>
+                        <div class="playbook-kpis">
+                            <div><span class="kpi-name">Current SoW:</span> <strong class="kpi-bold">9.47%</strong></div>
+                            <div><span class="kpi-name">Expected Recovery:</span> <strong class="delta-pos">+3.2% SoW</strong></div>
+                        </div>
+                        <div class="playbook-offer-box">
+                            <div class="offer-box-label">RECOMMENDED CAMPAIGN:</div>
+                            <div class="offer-box-action">10% Electronics Cashback</div>
+                        </div>
+                        <div class="playbook-note">
+                            <strong>Targeted Impact:</strong> Re-captures discretionary electronics & appliance purchases shifted to rival credit cards with instant 30-day promotional cashback.
+                        </div>
+                    </div>
+
+                    <!-- Segment 2: Grocery Heavy Users -->
+                    <div class="nbo-playbook-card">
+                        <div class="playbook-top">
+                            <span class="playbook-tag tag-grocery">GROCERY HEAVY USERS</span>
+                            <span class="playbook-count">6,814 Customers</span>
+                        </div>
+                        <div class="playbook-kpis">
+                            <div><span class="kpi-name">Current SoW:</span> <strong class="kpi-bold">12.40%</strong></div>
+                            <div><span class="kpi-name">Expected Recovery:</span> <strong class="delta-pos">+4.8% SoW</strong></div>
+                        </div>
+                        <div class="playbook-offer-box">
+                            <div class="offer-box-label">SEGMENT-LEVEL CAMPAIGN:</div>
+                            <div class="offer-box-action">Extra 5% Grocery Cashback</div>
+                        </div>
+                        <div class="playbook-note">
+                            <strong>Targeted Impact:</strong> Segment-level campaign (5% cashback vs. 3% customer-level NBO) to habituate 6,814 frequent grocery shoppers to co-branded card taps and counter UPI migration.
+                        </div>
+                    </div>
+
+                    <!-- Segment 3: Prime Users -->
+                    <div class="nbo-playbook-card">
+                        <div class="playbook-top">
+                            <span class="playbook-tag tag-prime">PRIME USERS</span>
+                            <span class="playbook-count">3,921 Customers</span>
+                        </div>
+                        <div class="playbook-kpis">
+                            <div><span class="kpi-name">Current SoW:</span> <strong class="kpi-bold">48.89%</strong></div>
+                            <div><span class="kpi-name">Expected Recovery:</span> <strong class="delta-pos">+5.5% SoW</strong></div>
+                        </div>
+                        <div class="playbook-offer-box">
+                            <div class="offer-box-label">RECOMMENDED CAMPAIGN:</div>
+                            <div class="offer-box-action">Double Reward Week</div>
+                        </div>
+                        <div class="playbook-note">
+                            <strong>Targeted Impact:</strong> Exclusive 2X reward points festival + free delivery access reinforcing brand loyalty and wallet share dominance.
+                        </div>
+                    </div>
+
+                    <!-- Segment 4: Low Engagement -->
+                    <div class="nbo-playbook-card">
+                        <div class="playbook-top">
+                            <span class="playbook-tag tag-low">LOW ENGAGEMENT</span>
+                            <span class="playbook-count">25,916 Customers</span>
+                        </div>
+                        <div class="playbook-kpis">
+                            <div><span class="kpi-name">Current SoW:</span> <strong class="kpi-bold">11.99%</strong></div>
+                            <div><span class="kpi-name">Expected Recovery:</span> <strong class="delta-pos">+2.1% SoW</strong></div>
+                        </div>
+                        <div class="playbook-offer-box">
+                            <div class="offer-box-label">RECOMMENDED CAMPAIGN:</div>
+                            <div class="offer-box-action">₹500 Welcome Back Bonus</div>
+                        </div>
+                        <div class="playbook-note">
+                            <strong>Targeted Impact:</strong> Statement credit after completing 2 in-store purchases &gt; INR 1,000 to re-awaken dormant cardholders at minimal cost.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. K-MEANS SEGMENTATION TABLE & CHARTS -->
+            <div class="card-panel">
+                <div class="panel-header">
+                    <div class="panel-title">K-Means Machine Learning Behavioral Segmentation (K=5)</div>
+                    <div class="panel-badge">Silhouette Score: 0.3930 | Evaluated K in [3, 4, 5, 6]</div>
+                </div>
+
+                <div class="table-container" style="margin-top: 8px;">
+                    <table class="data-table" id="table-full-segmentation">
+                        <thead>
+                            <tr>
+                                <th>Segment Name</th>
+                                <th class="num">Accounts</th>
+                                <th class="num">Portfolio %</th>
+                                <th class="num">Avg FY26 SoW</th>
+                                <th class="num">Avg SoW Delta</th>
+                                <th class="num">Avg Risk Score</th>
+                                <th class="num">Avg MetroMart Spend</th>
+                                <th class="num">Avg Wallet Opportunity</th>
+                                <th class="num">Total Wallet Opp</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div class="panel-grid-2" style="margin-top: 14px;">
+                    <div class="card-panel subpanel">
+                        <div class="panel-header">
+                            <div class="panel-title">Customer Distribution by Segment</div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-segment-distribution"></canvas>
+                        </div>
+                    </div>
+                    <div class="card-panel subpanel">
+                        <div class="panel-header">
+                            <div class="panel-title">Total Wallet Opportunity by Segment (INR)</div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-segment-opp"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Institutional Compliance Footer -->
+    <footer class="footer-bar">
+        <div class="footer-left">
+            <span class="footer-item">© 2026 Customer & Credit Card Analytics. All Rights Reserved.</span>
+            <span class="footer-sep">|</span>
+            <span class="footer-item"><a href="#privacy">Cardholder Data Protection Policy</a></span>
+            <span class="footer-sep">|</span>
+            <span class="footer-item"><a href="#security">Compliance Standards</a></span>
+        </div>
+        <div class="footer-right">
+            <span class="footer-badge">CUSTOMER ANALYTICS SUITE</span>
+        </div>
+    </footer>
+
+    <script src="./data_store.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

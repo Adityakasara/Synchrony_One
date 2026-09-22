@@ -1,0 +1,122 @@
+[
+  {
+    "Category": "Electronics",
+    "FY25_Total_Spend": 84899239.89,
+    "FY26_Total_Spend": 97792584.02,
+    "FY25_HSIC_Spend": 19322746.94,
+    "FY26_HSIC_Spend": 15557314.22,
+    "FY25_HSIC_SoW_Pct": 22.76,
+    "FY26_HSIC_SoW_Pct": 15.91,
+    "SoW_Change_pp": -6.85,
+    "Total_Spend_Growth_Pct": 15.19,
+    "HSIC_Spend_Growth_Pct": -19.49
+  },
+  {
+    "Category": "Large Applicances",
+    "FY25_Total_Spend": 65101281.8,
+    "FY26_Total_Spend": 76541888.1,
+    "FY25_HSIC_Spend": 14692014.57,
+    "FY26_HSIC_Spend": 11914300.53,
+    "FY25_HSIC_SoW_Pct": 22.57,
+    "FY26_HSIC_SoW_Pct": 15.57,
+    "SoW_Change_pp": -7.0,
+    "Total_Spend_Growth_Pct": 17.57,
+    "HSIC_Spend_Growth_Pct": -18.91
+  },
+  {
+    "Category": "Furniture",
+    "FY25_Total_Spend": 58327081.56,
+    "FY26_Total_Spend": 67769110.91,
+    "FY25_HSIC_Spend": 13607374.58,
+    "FY26_HSIC_Spend": 10772907.53,
+    "FY25_HSIC_SoW_Pct": 23.33,
+    "FY26_HSIC_SoW_Pct": 15.9,
+    "SoW_Change_pp": -7.43,
+    "Total_Spend_Growth_Pct": 16.19,
+    "HSIC_Spend_Growth_Pct": -20.83
+  },
+  {
+    "Category": "Travel",
+    "FY25_Total_Spend": 48622689.99,
+    "FY26_Total_Spend": 55022456.2,
+    "FY25_HSIC_Spend": 10881645.04,
+    "FY26_HSIC_Spend": 8752799.2,
+    "FY25_HSIC_SoW_Pct": 22.38,
+    "FY26_HSIC_SoW_Pct": 15.91,
+    "SoW_Change_pp": -6.47,
+    "Total_Spend_Growth_Pct": 13.16,
+    "HSIC_Spend_Growth_Pct": -19.56
+  },
+  {
+    "Category": "Apparel",
+    "FY25_Total_Spend": 29098938.21,
+    "FY26_Total_Spend": 33607786.39,
+    "FY25_HSIC_Spend": 6413108.11,
+    "FY26_HSIC_Spend": 5545132.0600000005,
+    "FY25_HSIC_SoW_Pct": 22.04,
+    "FY26_HSIC_SoW_Pct": 16.5,
+    "SoW_Change_pp": -5.54,
+    "Total_Spend_Growth_Pct": 15.49,
+    "HSIC_Spend_Growth_Pct": -13.53
+  },
+  {
+    "Category": "Outdoor",
+    "FY25_Total_Spend": 26218086.93,
+    "FY26_Total_Spend": 30112533.6,
+    "FY25_HSIC_Spend": 6027447.449999999,
+    "FY26_HSIC_Spend": 4610972.92,
+    "FY25_HSIC_SoW_Pct": 22.99,
+    "FY26_HSIC_SoW_Pct": 15.31,
+    "SoW_Change_pp": -7.68,
+    "Total_Spend_Growth_Pct": 14.85,
+    "HSIC_Spend_Growth_Pct": -23.5
+  },
+  {
+    "Category": "Grocery",
+    "FY25_Total_Spend": 20431019.3,
+    "FY26_Total_Spend": 23335394.35,
+    "FY25_HSIC_Spend": 4500201.3,
+    "FY26_HSIC_Spend": 3624916.8,
+    "FY25_HSIC_SoW_Pct": 22.03,
+    "FY26_HSIC_SoW_Pct": 15.53,
+    "SoW_Change_pp": -6.5,
+    "Total_Spend_Growth_Pct": 14.22,
+    "HSIC_Spend_Growth_Pct": -19.45
+  },
+  {
+    "Category": "Kids And Toys",
+    "FY25_Total_Spend": 19380286.43,
+    "FY26_Total_Spend": 21919187.81,
+    "FY25_HSIC_Spend": 4434489.079999999,
+    "FY26_HSIC_Spend": 3424247.79,
+    "FY25_HSIC_SoW_Pct": 22.88,
+    "FY26_HSIC_SoW_Pct": 15.62,
+    "SoW_Change_pp": -7.26,
+    "Total_Spend_Growth_Pct": 13.1,
+    "HSIC_Spend_Growth_Pct": -22.78
+  },
+  {
+    "Category": "Beauty",
+    "FY25_Total_Spend": 16658348.23,
+    "FY26_Total_Spend": 19182580.84,
+    "FY25_HSIC_Spend": 3745158.31,
+    "FY26_HSIC_Spend": 3089560.47,
+    "FY25_HSIC_SoW_Pct": 22.48,
+    "FY26_HSIC_SoW_Pct": 16.11,
+    "SoW_Change_pp": -6.37,
+    "Total_Spend_Growth_Pct": 15.15,
+    "HSIC_Spend_Growth_Pct": -17.51
+  },
+  {
+    "Category": "Bill Payments",
+    "FY25_Total_Spend": 8908103.9,
+    "FY26_Total_Spend": 10404877.68,
+    "FY25_HSIC_Spend": 2047540.08,
+    "FY26_HSIC_Spend": 1630477.7,
+    "FY25_HSIC_SoW_Pct": 22.99,
+    "FY26_HSIC_SoW_Pct": 15.67,
+    "SoW_Change_pp": -7.32,
+    "Total_Spend_Growth_Pct": 16.8,
+    "HSIC_Spend_Growth_Pct": -20.37
+  }
+]
