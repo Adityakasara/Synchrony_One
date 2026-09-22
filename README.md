@@ -1,6 +1,7 @@
 # Customer and Credit Card Analytics — Silent Attrition & Share of Wallet Optimization
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Interactive%20Dashboard-brightgreen?style=for-the-badge&logo=googlechrome)](https://adityakasara.github.io/Synchrony_One/)
+[![Executive PDF](https://img.shields.io/badge/Executive%20Case%20Study-PDF%20Report-red?style=for-the-badge&logo=adobeacrobatreader)](HSIC_SOLUTION_Executive_Findings.pdf)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Notebook-Jupyter-orange?style=for-the-badge&logo=jupyter)](notebooks/analysis.ipynb)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge)](LICENSE)
@@ -9,9 +10,9 @@ An institutional-grade analytics solution for detecting **Silent Attrition**, di
 
 ---
 
-## 🚀 Live Interactive Dashboard
-Experience the live web application directly in your browser:  
-👉 **[https://adityakasara.github.io/Synchrony_One/](https://adityakasara.github.io/Synchrony_One/)**
+## 🚀 Live Interactive Dashboard & Case Study
+- 👉 **Live Web Application:** [https://adityakasara.github.io/Synchrony_One/](https://adityakasara.github.io/Synchrony_One/)
+- 📄 **Judge-Facing Executive PDF:** [HSIC_SOLUTION_Executive_Findings.pdf](HSIC_SOLUTION_Executive_Findings.pdf)
 
 ---
 
