@@ -432,26 +432,84 @@ function initSearch() {
     const btn = document.getElementById("btn-search");
     const input = document.getElementById("input-customer-search");
 
-    btn.addEventListener("click", () => {
+    const doSearch = async () => {
         const val = input.value.trim();
-        if (val) loadCustomer(val);
-    });
-
-    input.addEventListener("keyup", (e) => {
-        if (e.key === "Enter") {
-            const val = input.value.trim();
-            if (val) loadCustomer(val);
+        if (!val) return;
+        btn.disabled = true;
+        btn.innerText = "Searching...";
+        try {
+            await loadCustomer(val);
+        } finally {
+            btn.disabled = false;
+            btn.innerText = "Search";
         }
+    };
+
+    btn.addEventListener("click", doSearch);
+    input.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") doSearch();
+    });
+}
+
+function loadShardScript(prefix) {
+    return new Promise((resolve, reject) => {
+        if (window.SYNCHRONY_SHARDS && window.SYNCHRONY_SHARDS[prefix]) return resolve();
+        // Check if script already injected
+        const existing = document.querySelector(`script[data-shard="${prefix}"]`);
+        if (existing) {
+            existing.addEventListener("load", () => resolve());
+            existing.addEventListener("error", () => reject(new Error(`Shard ${prefix} failed to load`)));
+            return;
+        }
+        const s = document.createElement("script");
+        s.setAttribute("data-shard", prefix);
+        s.src = `./api/customers/shard_${prefix}.js`;
+        s.onload = () => resolve();
+        s.onerror = () => reject(new Error(`Shard ${prefix} failed to load`));
+        document.head.appendChild(s);
     });
 }
 
 async function loadCustomer(cid) {
     try {
         let c;
-        try {
-            c = await fetchData(`./api/customers/${cid}.json`, `/api/customer/${cid}`);
-        } catch (e) {
-            alert(`Customer ID #${cid} was not found in sample profiles. Try #25790, #33822, #24664, #94244, #58218, #25555.`);
+        // Clean customer ID to numbers only (handles #25790, Customer 25790, etc.)
+        const cidStr = String(cid).replace(/[^0-9]/g, "").trim();
+        if (!cidStr) {
+            alert("Please enter a valid numeric Customer ID (e.g. 25790, 83487, 45620).");
+            return;
+        }
+        const prefix = cidStr.slice(0, 2);
+
+        // 1. Check in-memory shards
+        if (window.SYNCHRONY_SHARDS && window.SYNCHRONY_SHARDS[prefix] && window.SYNCHRONY_SHARDS[prefix][cidStr]) {
+            c = window.SYNCHRONY_SHARDS[prefix][cidStr];
+        }
+        // 2. Check pre-bundled customer sample
+        else if (window.SYNCHRONY_DATA && window.SYNCHRONY_DATA.customers && window.SYNCHRONY_DATA.customers[cidStr]) {
+            c = window.SYNCHRONY_DATA.customers[cidStr];
+        }
+        // 3. Load shard on-demand via script tag (100% compatible with file:/// and HTTP/HTTPS)
+        else {
+            try {
+                await loadShardScript(prefix);
+                if (window.SYNCHRONY_SHARDS && window.SYNCHRONY_SHARDS[prefix]) {
+                    c = window.SYNCHRONY_SHARDS[prefix][cidStr];
+                }
+            } catch(e) {
+                console.warn(`Could not load shard_${prefix}.js:`, e);
+            }
+        }
+
+        // 4. Fallback to individual customer endpoint if available
+        if (!c) {
+            try {
+                c = await fetchData(`./api/customers/${cidStr}.json`, `/api/customer/${cidStr}`);
+            } catch (e) {}
+        }
+
+        if (!c) {
+            alert(`Customer ID #${cidStr} was not found in dataset. Valid customer IDs range from 10000 to 99999.`);
             return;
         }
 
