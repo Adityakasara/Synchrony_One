@@ -39,15 +39,15 @@ Instead of treating customer risk as an unexplained black-box label, the Radar d
 ### 2. Next Best Offer (NBO) Engine ⭐
 Translates diagnostic analytics into deterministic **IF / THEN** commercial action rules:
 - **`IF Electronics Shifted to Rival Bank CC`** $\rightarrow$ *"Offer 10% cashback on Electronics for 30 days + 0% Instant POS EMI"*
-- **`IF Frequent Grocery Shopper (>= 2 visits) AND SoW < 40%`** $\rightarrow$ *"Individual NBO: Offer extra 3% grocery cashback on all MetroMart purchases for 60 days"*
+- **`IF Frequent Grocery Shopper (>= 2 visits) AND SoW < 40%`** $\rightarrow$ *"Customer-level NBO: Extra 3% grocery cashback on all MetroMart purchases for 60 days"*
 - **`IF MetroMart Stored Wallet Dominant Tender`** $\rightarrow$ *"Offer 2.5% instant auto-reload wallet bonus when funded via HSIC Card"*
 - **`IF Displaced by UPI QR Phone Scanning`** $\rightarrow$ *"Issue Virtual RuPay Card on UPI with 1.5% scan-and-pay cashback"*
 - **`IF 100% HSIC Loyalty AND Non-Prime Member`** $\rightarrow$ *"Complimentary 1-Year Prime Upgrade as Top Customer Loyalty Reward"*
 
-> [!NOTE]
-> **Offer Calibration Strategy:**
-> - **Individual NBO (3% Cashback):** A personalized micro-incentive triggered for individual cardholders displaying early grocery tender diversion to protect program margin.
-> - **Segment-Wide Campaign (5% Cashback):** A promotional, portfolio-wide marketing push deployed across the broader "Grocery Heavy Users" cohort to recapture top-of-wallet volume.
+> [!IMPORTANT]
+> **Two-Tier Offer Architecture (Customer-Level NBO vs. Segment-Level Campaign):**
+> - **Customer-level NBO $\rightarrow$ 3% cashback:** A personalized micro-incentive triggered for individual cardholders displaying early grocery tender diversion to protect program margin.
+> - **Segment-level campaign $\rightarrow$ 5% cashback:** A promotional, portfolio-wide marketing push deployed across the broader "Grocery Heavy Users" cohort (6,814 accounts) to recapture top-of-wallet volume.
 
 ### 3. Early Warning Center (Watchlist)
 - 🔴 **High Risk (1,245 customers):** Severe Silent Attrition (SoW drop > 40%)
@@ -58,7 +58,7 @@ Translates diagnostic analytics into deterministic **IF / THEN** commercial acti
 | Segment | Customers | Current SoW | Recommended Campaign | Expected Recovery | Strategy Tier |
 | :--- | :---: | :---: | :--- | :---: | :--- |
 | **Emerging Risk** | 4,565 | 9.47% | **10% Electronics Cashback** | **+3.2% SoW** | High-ticket POS EMI capture |
-| **Grocery Heavy Users** | 6,814 | 12.40% | **Segment Campaign: Extra 5% Grocery Cashback** *(vs 3% Individual NBO)* | **+4.8% SoW** | Portfolio-wide supermarket push |
+| **Grocery Heavy Users** | 6,814 | 12.40% | **Segment-level campaign: Extra 5% Grocery Cashback** *(vs 3% Customer-level NBO)* | **+4.8% SoW** | Portfolio-wide supermarket push |
 | **Prime Users** | 3,921 | 48.89% | **Double Reward Week** | **+5.5% SoW** | High-margin loyalty defense |
 | **Low Engagement** | 25,916 | 11.99% | **₹500 Welcome Back Bonus** | **+2.1% SoW** | Win-back activation tender |
 
@@ -158,7 +158,7 @@ Search these representative account IDs on the [Live Dashboard](https://adityaka
 | :---: | :--- | :--- | :--- |
 | **`#25555`** | Non-Prime, **+84.4 pp SoW Lift** (100% Loyalty) | 🟢 **Loyalty Radar:** 100% Co-Brand Capture | `IF 100% Loyalty AND Non-Prime` $\rightarrow$ **Complimentary 1-Yr Prime Upgrade** |
 | **`#25790`** | Prime, **-100.0 pp SoW Drop** (Severe Attrition) | 🔴 **Risk Radar:** Shifted checkouts to Wallet | `IF Wallet Dominant` $\rightarrow$ **2.5% Auto-Reload Bonus on Card Top-Up** |
-| **`#33822`** | Core Grocery Basket Migration (-35.2 pp) | 🔴 **Risk Radar:** Food baskets shifted to UPI | `IF Frequent Grocery Shopper` $\rightarrow$ **Extra 3% Grocery Cashback for 60 Days** |
+| **`#33822`** | Core Grocery Basket Migration (-35.2 pp) | 🔴 **Risk Radar:** Food baskets shifted to UPI | `IF Frequent Grocery Shopper` $\rightarrow$ **Customer-level NBO: Extra 3% Grocery Cashback for 60 Days** |
 | **`#24664`** | Electronics Migration to Competitor Card | 🔴 **Risk Radar:** Shifted to rival credit card | `IF Electronics Shifted to Rival CC` $\rightarrow$ **10% Cashback + 0% Instant POS EMI** |
 | **`#58218`** | Counter UPI QR Migration (-42.1 pp) | 🔴 **Risk Radar:** POS plastic card friction | `IF Displaced by UPI QR` $\rightarrow$ **Virtual RuPay Card on UPI (1.5% Scan&Pay)** |
 
