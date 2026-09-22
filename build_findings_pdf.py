@@ -152,7 +152,7 @@ story.append(Spacer(1, 6))
 story.append(make_callout(
     "KEY FINDING",
     "Customers are still shopping at MetroMart. An increasing portion of their checkout spend is moving away from HSIC. "
-    "Because retail spending is actively growing, this is not an account churn problem — it is a tender displacement problem."
+    "Because retail spending is actively growing, this suggests the primary issue is tender displacement rather than simple account churn."
 ))
 story.append(Spacer(1, 8))
 
@@ -192,9 +192,9 @@ story.append(Spacer(1, 8))
 
 # Finishing paragraph
 story.append(Paragraph(
-    "The solution turns a portfolio-level warning into a customer-level action. By isolating exactly where cardholder spend "
-    "leaks across checkout registers, Synchrony can identify which cardholders are silently diverting spend and deliver "
-    "targeted commercial interventions before payment diversion hardens into permanent brand churn.",
+    "The solution turns a portfolio-level warning into a customer-level action. By identifying where cardholder spend "
+    "is moving across payment methods, Synchrony can identify customers who are silently diverting spend and deliver "
+    "targeted commercial interventions.",
     s_body
 ))
 
@@ -248,7 +248,7 @@ story.append(make_callout(
     "STRUCTURAL CONCERN",
     "The concern is not simply fewer transactions. It is declining HSIC capture of transactions that are still happening. "
     "From a peak of 26.60% (Aug 2024), HSIC Share of Wallet eroded steadily to 12.01% (Jul 2026). "
-    "Traditional churn models miss this entirely because cardholders remain active in MetroMart's loyalty database."
+    "Traditional activity-based churn indicators may miss this behaviour because cardholders remain active in MetroMart."
 ))
 
 # Page 2 Break
@@ -458,7 +458,7 @@ nbo_rows = [
     ],
     [
         Paragraph("100% HSIC card loyalty + Non-Prime member", s_caption_bold),
-        Paragraph("Retention / loyalty opportunity (Zero churn risk)", s_caption),
+        Paragraph("Retention / loyalty opportunity", s_caption),
         Paragraph("<b>Complimentary 1-Year Prime Upgrade</b> (VIP Reward)", ParagraphStyle('PR', fontName='DejaVuSans-Bold', fontSize=8, textColor=C_GREEN))
     ]
 ]
@@ -585,7 +585,7 @@ scen_headers = [
     Paragraph("<b>GROSS CARD SPEND RECAPTURED</b>", ParagraphStyle('SH2', fontName='DejaVuSans-Bold', fontSize=8, textColor=colors.white)),
     Paragraph("<b>ESTIMATED CAMPAIGN BUDGET</b>", ParagraphStyle('SH3', fontName='DejaVuSans-Bold', fontSize=8, textColor=colors.white)),
     Paragraph("<b>NET FINANCIAL LIFT</b>", ParagraphStyle('SH4', fontName='DejaVuSans-Bold', fontSize=8, textColor=colors.white)),
-    Paragraph("<b>PROJECTED ROI</b>", ParagraphStyle('SH5', fontName='DejaVuSans-Bold', fontSize=8, textColor=colors.white))
+    Paragraph("<b>ILLUSTRATIVE ROI</b>", ParagraphStyle('SH5', fontName='DejaVuSans-Bold', fontSize=8, textColor=colors.white))
 ]
 scen_rows = [
     scen_headers,
@@ -594,31 +594,31 @@ scen_rows = [
         Paragraph("₹2.72M", s_caption_bold),
         Paragraph("₹500,000", s_caption),
         Paragraph("₹2.22M", s_caption_bold),
-        Paragraph("3.2x Net ROI", s_caption)
+        Paragraph("3.2x Illustrative ROI", s_caption)
     ],
     [
         Paragraph("<b>10% Recapture Scenario (Base Case)</b>", ParagraphStyle('B1', fontName='DejaVuSans-Bold', fontSize=8, textColor=C_GREEN)),
         Paragraph("<b>₹5.44M</b>", ParagraphStyle('B2', fontName='DejaVuSans-Bold', fontSize=8, textColor=C_GREEN)),
         Paragraph("₹850,000", s_caption),
         Paragraph("<b>₹4.59M</b>", ParagraphStyle('B3', fontName='DejaVuSans-Bold', fontSize=8, textColor=C_GREEN)),
-        Paragraph("<b>5.2x Net ROI</b>", ParagraphStyle('B4', fontName='DejaVuSans-Bold', fontSize=8, textColor=C_GREEN))
+        Paragraph("<b>5.2x Illustrative ROI</b>", ParagraphStyle('B4', fontName='DejaVuSans-Bold', fontSize=8, textColor=C_GREEN))
     ],
     [
         Paragraph("15% Recapture Scenario", s_caption),
         Paragraph("₹8.15M", s_caption_bold),
         Paragraph("₹1,150,000", s_caption),
         Paragraph("₹7.00M", s_caption_bold),
-        Paragraph("8.6x Net ROI", s_caption)
+        Paragraph("8.6x Illustrative ROI", s_caption)
     ],
     [
         Paragraph("20% Recapture Scenario", s_caption),
         Paragraph("₹10.87M", s_caption_bold),
         Paragraph("₹1,450,000", s_caption),
         Paragraph("₹9.42M", s_caption_bold),
-        Paragraph("11.8x Net ROI", s_caption)
+        Paragraph("11.8x Illustrative ROI", s_caption)
     ]
 ]
-t_scen = Table(scen_rows, colWidths=[150, 105, 95, 95, USABLE_WIDTH - 445])
+t_scen = Table(scen_rows, colWidths=[138, 98, 92, 90, USABLE_WIDTH - 418])
 t_scen.setStyle(TableStyle([
     ('BACKGROUND', (0,0), (-1,0), C_NAVY_DARK),
     ('ROWBACKGROUNDS', (0,1), (-1,-1), [C_LIGHT_BG, colors.white]),
@@ -633,7 +633,7 @@ story.append(Spacer(1, 6))
 # Recovery Visual Chart
 story.append(Image(os.path.join(CHARTS_DIR, "p5_recovery_scenarios.png"), width=USABLE_WIDTH, height=135))
 story.append(Spacer(1, 4))
-story.append(Paragraph("<font size=7.5 color='#64748B'>* Note: These are illustrative recovery scenarios, not guaranteed revenue or speculative forecasts. Actual recovery should be validated through controlled campaigns.</font>", s_caption))
+story.append(Paragraph("<font size=7.5 color='#64748B'>* Note: These are illustrative recovery scenarios, not guaranteed revenue or speculative forecasts. Actual recovery should be validated through controlled campaigns. Campaign budgets are illustrative planning assumptions; actual costs will depend on offer redemption, customer eligibility and campaign design.</font>", s_caption))
 story.append(Spacer(1, 6))
 
 # Production Roadmap
